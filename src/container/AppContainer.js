@@ -20,8 +20,9 @@ const mapDispatchToProps = dispatch => {
           todosAPI.add(new Todo(content), dispatch);
         },
         onShowFilterList: statusOfList => {
-            const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
-            dispatch(showFilterList(todos))
+            // const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
+            // dispatch(showFilterList(todos))
+          todosAPI.filerByStatus(statusOfList,dispatch)
         },
         onUpdateItemContent: (viewId, content, statusOfList) => {
             todosAPI.updateItemContent(viewId, content)

@@ -6,6 +6,7 @@ const todosAPI = {
 
 
   add(item,dispatch) {
+    // this.todos.push(item);
     let lastTodolist=[];
     //先获取原来的值
     axios.get('http://localhost:8080/api/todos')
@@ -27,9 +28,6 @@ const todosAPI = {
             console.log(error);
           })
       })
-    // this.todos.push(item);
-
-
 
   },
 
@@ -40,15 +38,19 @@ const todosAPI = {
     // }
     // return this.todos.filter(item => item.status === status);
     // console.log(dispatch);
-    axios.get('http://localhost:8080/api/todos')
-      .then(function (response) {
-        const todolist=response.data._embedded.todos;
-        // console.log(todolist);
-        dispatch(componentDidMount(todolist));
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+      //初始化
+    if(status===Todo.ALL) status="completed,active";
+      axios.get(`http://localhost:8080/api/todos/search/statusOfTodos?status=${status}`)
+        .then(function (response) {
+          const todolist=response.data._embedded.todos;
+          // console.log(todolist);
+          dispatch(componentDidMount(todolist));
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+
+
 
   },
 
