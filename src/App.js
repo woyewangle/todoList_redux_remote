@@ -20,15 +20,18 @@ class App extends Component {
     // this.setState({
     //   todos: this.deepCopy(this.todosAPI.filerByStatus(Todo.ALL))
     // });
+    console.log("初始化")
     this.props.onComponentDidMount()
   }
 
   add(event) {
     if (event.keyCode === 13 || event.button === 0) {
-      const todo = new Todo(this.refs.newItem.value)
       // console.log(statusOfList)
+      const content=this.refs.newItem.value;
       const statusOfList = this.props.statusOfList
-      this.props.onAdd(todo,statusOfList)
+      this.props.onAdd(content,statusOfList)
+      // console.log("添加完毕");
+      // this.componentDidMount();
       this.refs.newItem.value = '';
     }
 
@@ -48,6 +51,7 @@ class App extends Component {
     //console.log(this.state.todos);
     const statusOfList = event.target.attributes.getNamedItem('data-filter')
       .value;
+    console.log("显示"+statusOfList);
     this.props.onShowFilterList(statusOfList)
 
   }

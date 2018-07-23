@@ -12,12 +12,12 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onAdd: (todo, statusOfList) => {
-            todosAPI.add(todo)
-            const todos = deepCopy(
-                todosAPI.filerByStatus(statusOfList)
-            );
-            dispatch(add(todos))
+        onAdd: (content, statusOfList) => {
+            // todosAPI.add(new Todo(content))
+            // const todos = deepCopy(todosAPI.filerByStatus(statusOfList)
+            // );
+            // dispatch(add(todos))
+          todosAPI.add(new Todo(content), dispatch);
         },
         onShowFilterList: statusOfList => {
             const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
@@ -33,9 +33,13 @@ const mapDispatchToProps = dispatch => {
             const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
             dispatch(toggleActive(todos))
         },
+
         onComponentDidMount:()=>{
-            const todos = deepCopy(todosAPI.filerByStatus(Todo.ALL))
-            dispatch(componentDidMount(todos))
+            // const todos = deepCopy(todosAPI.filerByStatus(Todo.ALL))
+            // dispatch(componentDidMount(todos))
+          console.log(Todo.ALL);
+          console.log(dispatch)
+          todosAPI.filerByStatus(Todo.ALL,dispatch);
         }
 
     }
