@@ -29,17 +29,17 @@ const mapDispatchToProps = dispatch => {
             const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
             dispatch(updateItemContent(todos))
         },
-        onToggleActive: (viewId,statusOfList) => {
-            todosAPI.toggleActive(viewId)
-            const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
-            dispatch(toggleActive(todos))
+        onToggleActive: (viewId,status) => {
+            // todosAPI.toggleActive(viewId)
+            // const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
+            // dispatch(toggleActive(todos))
+          todosAPI.toggleActive(viewId,status,dispatch)
+
         },
 
         onComponentDidMount:()=>{
             // const todos = deepCopy(todosAPI.filerByStatus(Todo.ALL))
             // dispatch(componentDidMount(todos))
-          console.log(Todo.ALL);
-          console.log(dispatch)
           todosAPI.filerByStatus(Todo.ALL,dispatch);
         }
 

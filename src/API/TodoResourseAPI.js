@@ -17,11 +17,8 @@ const todosAPI = {
           "status":item.status
         })
           .then(function (response) {
-            debugger;
-            console.log("进入添加reducer");
             const todolist=response.data;
             lastTodolist.push(todolist);
-            console.log(lastTodolist);
             dispatch(add(lastTodolist));
           })
           .catch(function (error) {
@@ -49,17 +46,39 @@ const todosAPI = {
         .catch(function (error) {
           console.log(error);
         })
-
-
-
   },
 
+  toggleActive(viewId,status,dispatch) {
+    // let todo = this.todos.find(item => item.viewId === viewId);
+    // if (todo !== undefined) {
+    //   todo.toggleActive();
+    // }
+    console.log(status);
+    if (status=="completed") status="active";
+    else status="completed";
+    axios.patch(`http://localhost:8080/api/todos/${viewId}`,{
+      "status" : status
+    })
+      .then(function (response) {
+        console.log(status);
 
-  toggleActive(viewId) {
-    let todo = this.todos.find(item => item.viewId === viewId);
-    if (todo !== undefined) {
-      todo.toggleActive();
-    }
+        axios.get('http://localhost:8080/api/todos')
+          .then(function (response) {
+            const todolist=response.data._embedded.todos;
+            dispatch(toggleActive(todolist));
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+        // const todolist=response.data._embedded.todos;
+        // // console.log(todolist);
+        // dispatch(componentDidMount(todolist));
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
   },
 
   updateItemContent(viewId, content) {

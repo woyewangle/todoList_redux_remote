@@ -20,7 +20,6 @@ class App extends Component {
     // this.setState({
     //   todos: this.deepCopy(this.todosAPI.filerByStatus(Todo.ALL))
     // });
-    console.log("初始化")
     this.props.onComponentDidMount()
   }
 
@@ -37,14 +36,15 @@ class App extends Component {
 
   }
 
-  toggleActive(viewId) {
+  toggleActive(viewId,status) {
     // this.todosAPI.toggleActive(viewId);
     // const todos = this.deepCopy(
     //   this.todosAPI.filerByStatus(this.state.statusOfList)
     // );
     // this.setState({ todos });
-    const statusOfList = this.props.statusOfList
-    this.props.onToggleActive(viewId,statusOfList)
+
+    // console.log(viewId);
+    this.props.onToggleActive(viewId,status)
   }
 
   showFilterList(event) {
@@ -94,11 +94,12 @@ class App extends Component {
         <div>
           <ol>
             {(() => {
+              console.log(this.props.todoList);
               return this.props.todoList.map(item => (
                 <TodoItem
                   item={item}
-                  key={item.viewId}
-                  toggleActiveHandler={viewId => this.toggleActive(viewId)}
+                  key={item.id}
+                  toggleActiveHandler={() => this.toggleActive(item.id,item.status)}
                   updateItemContent={(viewId, content) =>
                     this.updateItemContent(viewId, content)
                   }
