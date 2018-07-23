@@ -81,11 +81,33 @@ const todosAPI = {
 
   },
 
-  updateItemContent(viewId, content) {
-    let todo = this.todos.find(item => item.viewId === viewId);
-    if (todo !== undefined) {
-      todo.content = content;
-    }
+  updateItemContent(viewId, content,dispatch) {
+    // let todo = this.todos.find(item => item.viewId === viewId);
+    // if (todo !== undefined) {
+    //   todo.content = content;
+    // }
+    axios.patch(`http://localhost:8080/api/todos/${viewId}`,{
+      "content" :content
+    })
+      .then(function (response) {
+        axios.get('http://localhost:8080/api/todos')
+          .then(function (response) {
+            const todolist=response.data._embedded.todos;
+            dispatch(updateItemContent(todolist));
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+        // const todolist=response.data._embedded.todos;
+        // // console.log(todolist);
+        // dispatch(componentDidMount(todolist));
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+
   }
 };
 export default todosAPI;

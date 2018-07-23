@@ -51,13 +51,13 @@ class App extends Component {
     //console.log(this.state.todos);
     const statusOfList = event.target.attributes.getNamedItem('data-filter')
       .value;
-    console.log("显示"+statusOfList);
     this.props.onShowFilterList(statusOfList)
 
   }
 
   updateItemContent(viewId, content) {
     const statusOfList = this.props.statusOfList
+    console.log("显示"+statusOfList);
     this.props.onUpdateItemContent(viewId, content,statusOfList)
     // this.todosAPI.updateItemContent(viewId, content);
     // const todos = this.deepCopy(
@@ -101,7 +101,7 @@ class App extends Component {
                   key={item.id}
                   toggleActiveHandler={() => this.toggleActive(item.id,item.status)}
                   updateItemContent={(viewId, content) =>
-                    this.updateItemContent(viewId, content)
+                    this.updateItemContent(item.id, content)
                   }
                 />
               ));
