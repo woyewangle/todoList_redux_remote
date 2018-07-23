@@ -12,13 +12,13 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onAdd: (content, statusOfList) => {
-            // todosAPI.add(new Todo(content))
-            // const todos = deepCopy(todosAPI.filerByStatus(statusOfList)
-            // );
-            // dispatch(add(todos))
-          todosAPI.add(new Todo(content), dispatch);
-        },
+        // onAdd: (content, statusOfList) => {
+        //     // todosAPI.add(new Todo(content))
+        //     // const todos = deepCopy(todosAPI.filerByStatus(statusOfList)
+        //     // );
+        //     // dispatch(add(todos))
+        //   todosAPI.add(new Todo(content), dispatch);
+        // },
         onShowFilterList: statusOfList => {
             // const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
             // dispatch(showFilterList(todos))

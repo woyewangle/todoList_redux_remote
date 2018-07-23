@@ -4,6 +4,7 @@ import './App.css';
 import Todo from './model/Todo';
 import TodoItem from './components/TodoItem';
 import classNames from 'classnames';
+import Header from "./container/headerContainer";
 
 class App extends Component {
   constructor(props) {
@@ -23,18 +24,18 @@ class App extends Component {
     this.props.onComponentDidMount()
   }
 
-  add(event) {
-    if (event.keyCode === 13 || event.button === 0) {
-      // console.log(statusOfList)
-      const content=this.refs.newItem.value;
-      const statusOfList = this.props.statusOfList
-      this.props.onAdd(content,statusOfList)
-      // console.log("添加完毕");
-      // this.componentDidMount();
-      this.refs.newItem.value = '';
-    }
-
-  }
+  // add(event) {
+  //   if (event.keyCode === 13 || event.button === 0) {
+  //     // console.log(statusOfList)
+  //     const content=this.refs.newItem.value;
+  //     const statusOfList = this.props.statusOfList
+  //     this.props.onAdd(content,statusOfList)
+  //     // console.log("添加完毕");
+  //     // this.componentDidMount();
+  //     this.refs.newItem.value = '';
+  //   }
+  //
+  // }
 
   toggleActive(viewId,status) {
     // this.todosAPI.toggleActive(viewId);
@@ -80,17 +81,18 @@ class App extends Component {
             <em>Simple Todo List with adding and filter by diff status.</em>
           </p>
         </div>
-        <div>
-          <input
-            className="input-text"
-            onKeyUp={e => this.add(e)}
-            id="todo-creator"
-            ref="newItem"
-          />
-          <div className="button" onClick={e => this.add(e)}>
-            Add
-          </div>
-        </div>
+        <Header/>
+        {/*<div>*/}
+          {/*<input*/}
+            {/*className="input-text"*/}
+            {/*onKeyUp={e => this.add(e)}*/}
+            {/*id="todo-creator"*/}
+            {/*ref="newItem"*/}
+          {/*/>*/}
+          {/*<div className="button" onClick={e => this.add(e)}>*/}
+            {/*Add*/}
+          {/*</div>*/}
+        {/*</div>*/}
         <div>
           <ol>
             {(() => {
