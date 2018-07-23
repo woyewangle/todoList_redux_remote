@@ -19,11 +19,11 @@ const mapDispatchToProps = dispatch => {
         //     // dispatch(add(todos))
         //   todosAPI.add(new Todo(content), dispatch);
         // },
-        onShowFilterList: statusOfList => {
-            // const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
-            // dispatch(showFilterList(todos))
-          todosAPI.filerByStatus(statusOfList,dispatch)
-        },
+        // onShowFilterList: statusOfList => {
+        //     // const todos = deepCopy(todosAPI.filerByStatus(statusOfList))
+        //     // dispatch(showFilterList(todos))
+        //   todosAPI.filerByStatus(statusOfList,dispatch)
+        // },
         onUpdateItemContent: (viewId, content, statusOfList) => {
             // todosAPI.updateItemContent(viewId, content)
             // const todos = deepCopy(todosAPI.filerByStatus(statusOfList))

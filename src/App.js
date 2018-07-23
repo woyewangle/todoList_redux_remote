@@ -5,6 +5,7 @@ import Todo from './model/Todo';
 import TodoItem from './components/TodoItem';
 import classNames from 'classnames';
 import Header from "./container/headerContainer";
+import Footer from "./container/FooterContainer";
 
 class App extends Component {
   constructor(props) {
@@ -48,13 +49,13 @@ class App extends Component {
     this.props.onToggleActive(viewId,status)
   }
 
-  showFilterList(event) {
-    //console.log(this.state.todos);
-    const statusOfList = event.target.attributes.getNamedItem('data-filter')
-      .value;
-    this.props.onShowFilterList(statusOfList)
-
-  }
+  // showFilterList(event) {
+  //   //console.log(this.state.todos);
+  //   const statusOfList = event.target.attributes.getNamedItem('data-filter')
+  //     .value;
+  //   this.props.onShowFilterList(statusOfList)
+  //
+  // }
 
   updateItemContent(viewId, content) {
     const statusOfList = this.props.statusOfList
@@ -110,46 +111,48 @@ class App extends Component {
             })()}
           </ol>
         </div>
-        <div>
-          <ul className="filters">
-            <li>
-              <a
-                href="#all"
-                onClick={e => this.showFilterList(e)}
-                data-filter="all"
-                className={classNames({
-                  selected: this.props.statusOfList === Todo.ALL
-                })}
-              >
-                ALL
-              </a>
-            </li>
-            <li>
-              <a
-                href="#active"
-                onClick={e => this.showFilterList(e)}
-                data-filter="active"
-                className={classNames({
-                  selected: this.props.statusOfList === Todo.ACTIVE
-                })}
-              >
-                Active
-              </a>
-            </li>
-            <li>
-              <a
-                href="#completed"
-                onClick={e => this.showFilterList(e)}
-                data-filter="completed"
-                className={classNames({
-                  selected: this.props.statusOfList === Todo.COMPLETED
-                })}
-              >
-                Complete
-              </a>
-            </li>
-          </ul>
-        </div>
+        <Footer/>
+
+        {/*<div>*/}
+          {/*<ul className="filters">*/}
+            {/*<li>*/}
+              {/*<a*/}
+                {/*href="#all"*/}
+                {/*onClick={e => this.showFilterList(e)}*/}
+                {/*data-filter="all"*/}
+                {/*className={classNames({*/}
+                  {/*selected: this.props.statusOfList === Todo.ALL*/}
+                {/*})}*/}
+              {/*>*/}
+                {/*ALL*/}
+              {/*</a>*/}
+            {/*</li>*/}
+            {/*<li>*/}
+              {/*<a*/}
+                {/*href="#active"*/}
+                {/*onClick={e => this.showFilterList(e)}*/}
+                {/*data-filter="active"*/}
+                {/*className={classNames({*/}
+                  {/*selected: this.props.statusOfList === Todo.ACTIVE*/}
+                {/*})}*/}
+              {/*>*/}
+                {/*Active*/}
+              {/*</a>*/}
+            {/*</li>*/}
+            {/*<li>*/}
+              {/*<a*/}
+                {/*href="#completed"*/}
+                {/*onClick={e => this.showFilterList(e)}*/}
+                {/*data-filter="completed"*/}
+                {/*className={classNames({*/}
+                  {/*selected: this.props.statusOfList === Todo.COMPLETED*/}
+                {/*})}*/}
+              {/*>*/}
+                {/*Complete*/}
+              {/*</a>*/}
+            {/*</li>*/}
+          {/*</ul>*/}
+        {/*</div>*/}
       </div>
     );
   }
