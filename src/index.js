@@ -6,7 +6,7 @@ import './index.css';
 import counter from './reducers'
 import { Provider } from 'react-redux'
 import registerServiceWorker from './registerServiceWorker';
-import Container from './container/AppContainer'
+
 
 const store = createStore(counter)
 const rootEl = document.getElementById('root')

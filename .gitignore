@@ -1,5 +1,6 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 .idea
+todo-list-rest-api-0.1.0.jar
 # dependencies
 /node_modules
 

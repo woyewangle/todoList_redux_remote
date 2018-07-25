@@ -56,7 +56,6 @@ const toggleActive1=(viewId,status,dispatch)=> {
   })
     .then(function (response) {
       console.log(status);
-
       axios.get('http://localhost:8080/api/todos')
         .then(function (response) {
           const todolist=response.data._embedded.todos;
@@ -65,9 +64,6 @@ const toggleActive1=(viewId,status,dispatch)=> {
         .catch(function (error) {
           console.log(error);
         })
-      // const todolist=response.data._embedded.todos;
-      // // console.log(todolist);
-      // dispatch(componentDidMount(todolist));
 
     })
     .catch(function (error) {
@@ -77,10 +73,6 @@ const toggleActive1=(viewId,status,dispatch)=> {
 }
 
 const updateItemContent1=(viewId, content,dispatch)=> {
-  // let todo = this.todos.find(item => item.viewId === viewId);
-  // if (todo !== undefined) {
-  //   todo.content = content;
-  // }
   axios.patch(`http://localhost:8080/api/todos/${viewId}`,{
     "content" :content
   })
@@ -93,16 +85,10 @@ const updateItemContent1=(viewId, content,dispatch)=> {
         .catch(function (error) {
           console.log(error);
         })
-      // const todolist=response.data._embedded.todos;
-      // // console.log(todolist);
-      // dispatch(componentDidMount(todolist));
-
     })
     .catch(function (error) {
       console.log(error);
     })
 }
-
-
 
 export {addItems,filerByStatus,updateItemContent1,toggleActive1}
