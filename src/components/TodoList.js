@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import TodoItem from "./TodoItem";
 
 export default class TodoList extends Component{
 
@@ -12,10 +13,12 @@ export default class TodoList extends Component{
 
   updateItemContent(viewId, content) {
     const statusOfList = this.props.statusOfList
-    console.log("显示"+statusOfList);
     this.props.onUpdateItemContent(viewId, content,statusOfList)
   }
 
+  componentDidMount() {
+    this.props.onComponentDidMount()
+  }
 
   render(){
     return(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { add, componentDidMount } from "../actions";
+import { add, componentDidMount, toggleActive, updateItemContent } from "../actions";
 import axios from "axios/index";
 import Todo from "../model/Todo";
 
@@ -46,4 +46,63 @@ const filerByStatus=(status,dispatch)=> {
     })
 }
 
-export {addItems,filerByStatus}
+const toggleActive1=(viewId,status,dispatch)=> {
+
+  console.log(status);
+  if (status=="completed") status="active";
+  else status="completed";
+  axios.patch(`http://localhost:8080/api/todos/${viewId}`,{
+    "status" : status
+  })
+    .then(function (response) {
+      console.log(status);
+
+      axios.get('http://localhost:8080/api/todos')
+        .then(function (response) {
+          const todolist=response.data._embedded.todos;
+          dispatch(toggleActive(todolist));
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+      // const todolist=response.data._embedded.todos;
+      // // console.log(todolist);
+      // dispatch(componentDidMount(todolist));
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+
+}
+
+const updateItemContent1=(viewId, content,dispatch)=> {
+  // let todo = this.todos.find(item => item.viewId === viewId);
+  // if (todo !== undefined) {
+  //   todo.content = content;
+  // }
+  axios.patch(`http://localhost:8080/api/todos/${viewId}`,{
+    "content" :content
+  })
+    .then(function (response) {
+      axios.get('http://localhost:8080/api/todos')
+        .then(function (response) {
+          const todolist=response.data._embedded.todos;
+          dispatch(updateItemContent(todolist));
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+      // const todolist=response.data._embedded.todos;
+      // // console.log(todolist);
+      // dispatch(componentDidMount(todolist));
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+}
+
+
+
+export {addItems,filerByStatus,updateItemContent1,toggleActive1}

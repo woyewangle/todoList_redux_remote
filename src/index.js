@@ -13,7 +13,7 @@ const rootEl = document.getElementById('root')
 
 ReactDOM.render(
     <Provider store={store} >
-        <Container />
+        <App />
     </Provider>,
     rootEl
 )
