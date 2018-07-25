@@ -17,13 +17,7 @@ class App extends Component {
     //   statusOfList: Todo.ALL
     // };
   }
-
-  componentDidMount() {
-    // this.setState({
-    //   todos: this.deepCopy(this.todosAPI.filerByStatus(Todo.ALL))
-    // });
-    this.props.onComponentDidMount()
-  }
+ 
 
   // add(event) {
   //   if (event.keyCode === 13 || event.button === 0) {
@@ -94,23 +88,23 @@ class App extends Component {
             {/*Add*/}
           {/*</div>*/}
         {/*</div>*/}
-        <div>
-          <ol>
-            {(() => {
-              console.log(this.props.todoList);
-              return this.props.todoList.map(item => (
-                <TodoItem
-                  item={item}
-                  key={item.id}
-                  toggleActiveHandler={() => this.toggleActive(item.id,item.status)}
-                  updateItemContent={(viewId, content) =>
-                    this.updateItemContent(item.id, content)
-                  }
-                />
-              ));
-            })()}
-          </ol>
-        </div>
+        {/*<div>*/}
+          {/*<ol>*/}
+            {/*{(() => {*/}
+              {/*console.log(this.props.todoList);*/}
+              {/*return this.props.todoList.map(item => (*/}
+                {/*<TodoItem*/}
+                  {/*item={item}*/}
+                  {/*key={item.id}*/}
+                  {/*toggleActiveHandler={() => this.toggleActive(item.id,item.status)}*/}
+                  {/*updateItemContent={(viewId, content) =>*/}
+                    {/*this.updateItemContent(item.id, content)*/}
+                  {/*}*/}
+                {/*/>*/}
+              {/*));*/}
+            {/*})()}*/}
+          {/*</ol>*/}
+        {/*</div>*/}
         <Footer/>
 
         {/*<div>*/}
